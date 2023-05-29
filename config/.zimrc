@@ -1,0 +1,50 @@
+# https://zimfw.sh/docs/cheatsheet/
+# https://zimfw.sh/docs/settings/
+
+# Themes
+# https://zimfw.sh/docs/themes/
+# zmodule asciiship # Default
+# zmodule romkatv/powerlevel10k
+zmodule eriner
+# zmodule sorin
+
+# Modules
+# https://zimfw.sh/docs/modules/
+# https://dev.to/sso/zsh-plugins-commit-top-4mbl
+
+# ZSH Module esstiales
+zmodule zsh-users/zsh-syntax-highlighting
+zmodule zsh-users/zsh-autosuggestions
+zmodule zsh-users/zsh-completions --fpath src
+zmodule kiesman99/zim-zoxide
+
+# zim built-ins modules
+zmodule utility
+zmodule prompt-pwd
+zmodule git-info
+zmodule termtitle
+zmodule magic-enter
+zmodule environment
+zmodule duration-info
+zmodule completion
+zmodule git
+zmodule archive
+zmodule fzf
+zmodule k
+
+# https://github.com/zimfw/pvenv
+zmodule pvenv
+
+# ~/.zim/modules/zsh-autoswitch-virtualenv
+# https://github.com/MichaelAquilina/zsh-autoswitch-virtualenv
+zmodule MichaelAquilina/zsh-autoswitch-virtualenv
+# touch init.zsh
+# cp autoswitch-virtualenv.plugin.zsh init.zsh
+# zimfw build
+
+# sudo apt-get install zoxide
+
+# https://zimfw.sh/docs/commands/
+# https://github.com/zimfw/completion
+# https://github.com/zimfw/k
+# https://github.com/zimfw/archive
