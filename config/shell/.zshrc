@@ -170,8 +170,6 @@ alias mi="minikube"
 alias ls="exa"
 alias la="exa -a"
 alias ll="exa -l"
-alias docker-compose="docker compose"
-alias podman-compose="podman compose"
 
 # Kubernetes Completion
 if [ /usr/local/bin/kubectl ]; then source <(kubectl completion zsh); fi

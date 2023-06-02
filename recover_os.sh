@@ -1,12 +1,10 @@
-#!/bin/bash
-# https://xuanthulab.net/cac-shebang-trong-script-cua-he-thong-unix.html
-apt-get -y update && apt-get -y upgrade
+git checkout develop
 
-sudo apt-get install -y lsb-release ca-certificates apt-transport-https curl wget \
-    software-properties-common git vim gedit nano gnupg
+# Install Packages
+sh packages/setup_os.sh
 
 # Install Apps
-sh ./apps.sh
+sh packages/apps.sh
 
 # Install tools
 sh tools/docker.sh
@@ -16,6 +14,7 @@ sh tools/hashicorps.sh
 
 # Install Kubenestes
 sh kubernetes/kubectl.sh
+#!bin/sh
 sh kubernetes/minikube.sh
 sh kubernetes/kind.sh
 sh kubernetes/tools_kube.sh

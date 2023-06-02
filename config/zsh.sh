@@ -24,8 +24,7 @@ zsh --version
 
 curl -fsSL https://raw.githubusercontent.com/zimfw/install/master/install.zsh | zsh
 chsh -s $(which zsh)
-cp config/.zshrc $HOME/.zshrc
-cp config/.zimrc $HOME/.zimrc
+sudo cp -rf ./* $HOME/
 eval "$(zoxide init zsh)"
 zimfw install
 # zimfw uninstall
