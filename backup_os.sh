@@ -17,6 +17,8 @@ cp -rf "$HOME"/.bash_functions config/shell
 # GIT
 cp -rf "$HOME"/.gitconfig config/shell
 
+sh packages/gnome-settings.sh
+
 
 git add .
 git commit -m "Backup OS $(now)"

@@ -8,6 +8,8 @@ sh packages/setup_os.sh
 # Install Apps
 sh packages/apps.sh
 
+# dconf load / < "./config/dconf-settings.conf"
+
 # Install tools
 sh tools/docker.sh
 sh tools/podman.sh
