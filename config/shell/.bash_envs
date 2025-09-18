@@ -1,0 +1,48 @@
+#!/bin/bash
+
+export PATH=$HOME/bin:/usr/local/bin:$PATH
+
+# JS
+# BUN, DENO
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+. "/home/tttung/.deno/env"
+
+export VOLTA_HOME="$HOME/.volta"
+export PATH="$VOLTA_HOME/bin:$PATH"
+
+# FNM
+FNM_PATH="/home/tttung/.local/share/fnm"
+if [ -d "$FNM_PATH" ]; then
+  export PATH="$FNM_PATH:$PATH"
+  eval "`fnm env`"
+fi
+
+
+# PYENV
+export PVENV_HOME=~/pyenv
+export PATH="$HOME/.pyenv/bin:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+
+
+# JAVA SDKMAN
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+
+# GOLANG
+export PATH=$PATH:/usr/local/go/bin
+export GOROOT="/home/$USER/go"
+#export GOPATH="/home/$USER/Projects/go/packages"
+#export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
+export GOROOT_BOOTSTRAP=$GOROOT
+
+# RUST
+. "$HOME/.cargo/env"
+
+
+export USE_GKE_GCLOUD_AUTH_PLUGIN=True
+
+# Added by Toolbox App
+export PATH="$PATH:/home/tttung/.local/share/JetBrains/Toolbox/scripts"
