@@ -1,40 +1,44 @@
-# alias
-# alias -p
-# alias name='command'
-# unalias NAME
-alias areload="source ~/.zshrc && echo ZSH config reloaded"
-alias zshre="source ~/.zshrc && echo ZSH config reloaded"
-# To change to the root user:
-alias root="sudo su -"
-alias su='sudo -i'
+#!/bin/bash
 
-# To change to "user," where "user" is set as your username:
-alias amy="su user"
+# TIPS
+# alias name="command"
+# unalias NAME
+
+alias zsh-load="source ~/.zshrc && echo ZSH config reloaded"
+
+# To change to the root user:
+alias su='sudo -i'
+alias root="sudo su -"
+
+
+alias ls="exa"
+alias la="exa -a"
+alias ll="exa -l"
 
 # NETWORK
 ## MyIP
 alias myip="ip -br -c a"
-alias ping8="ping 8.8.8.8"
-# Get local IPs
+alias ping888="ping 8.8.8.8"
+
 
 # To check the status of any system service:
-alias assu="sudo systemctl status"
-alias asst="sudo systemctl start"
-alias assre="sudo systemctl restart"
-alias asse="sudo systemctl enable"
-alias asso="sudo systemctl stop"
-alias assd="sudo systemctl disable"
+alias sstatus="sudo systemctl status"
+alias sstart="sudo systemctl start"
+alias sretart="sudo systemctl restart"
+alias senable="sudo systemctl enable"
+alias sstop="sudo systemctl stop"
+alias sdisable="sudo systemctl disable"
 
-alias acpu="lscpu & cat /proc/cpuinfo"
-alias amem="free -h & cat /proc/meminfo"
-alias meminfo='free -m -l -t'
-alias adf="df -h"
-alias alsb="cat /etc/lsb-release & lsb_release -a"
+alias scpu="lscpu & cat /proc/cpuinfo"
+alias smem="free -h & cat /proc/meminfo"
+alias smem-info='free -m -l -t'
+alias sdisk="df -h"
+alias srelease="cat /etc/lsb-release & lsb_release -a"
 
-alias h='history'
-alias job='jobs -l'
+alias hh='history'
+alias jobs='jobs -l'
 alias now='date '\''+%A %d %B %Y - %T'\'''
-alias adate='date +"%d-%m-%Y"'
+alias sdate='date +"%d-%m-%Y"'
 
 # CD
 alias ..='cd ..'
@@ -43,28 +47,24 @@ alias .3='cd ../../..'
 alias .4='cd ../../..'
 alias .h='cd ~'
 alias ./='cd /'
-alias c='clear'
+alias cc='clear'
 
 # List All Process
-alias aps="ps -aux"
-
-# Bí danh này thay thế lt bằng lệnh ls hiển thị kích thước của từng mục, sau đó sắp xếp theo kích thước
-alias als='ls --human-readable --size -1 -S --classify'
-alias amnt="mount | awk -F' ' '{ printf \"%s\t%s\n\",\$1,\$3; }' | column -t | egrep ^/dev/ | sort"
+alias psa="ps -aux"
 
 # Nó xảy ra vào thứ Hai hàng tuần: Bạn đi làm, ngồi vào máy tính, mở một thiết bị đầu cuối và nhận ra mình đã quên mất mình đang làm gì vào thứ Sáu tuần trước.
 # Những gì bạn cần là một bí danh để liệt kê các tệp được sửa đổi gần đây nhất.
-alias minda='ls -t -1'
+alias modify='ls -t -1'
 
 # APT
-alias aup="sudo apt-get update"
-alias aug="sudo apt-get upgrade"
-alias aai="sudo apt-get install"
-alias aafgr='sudo apt list --installed | grep'
+alias aptd="sudo apt-get update"
+alias aptg="sudo apt-get upgrade"
+alias apti="sudo apt-get install"
+alias aptl='sudo apt list --installed | grep'
 
 # DEB file
-alias adeb="sudo dpkg -i"
-alias adebfgr="dpkg -l | grep"
+alias debi="sudo dpkg -i"
+alias debl="dpkg -l | grep"
 
 # Tar file
 alias untar='tar -zxvf'
@@ -72,30 +72,39 @@ alias untar='tar -zxvf'
 alias ungzip="gzip -d"
 
 # Đếm tệp tin
-alias afwc='find . -type f | wc -l'
+alias cdir='find . -type f | wc -l'
 # Copy show process by rsync
-alias acp='rsync -ah --info=progress2'
+alias cpshow='rsync -ah --info=progress2'
 
 # GREP
-alias greph='history|grep'
+alias hgrep='history|grep'
 
 # PYTHON PIP
 alias python=python3
 alias pipl="pip list"
 alias pipi='pip install'
-alias pipf='pip freeze > requirements.txt'
-alias pipfd='pip freeze > requirements-dev.txt'
+alias pipfz='pip freeze > requirements.txt'
+alias pipfzd='pip freeze > requirements-dev.txt'
+alias pipfzt='pip freeze > requirements-test.txt'
+alias pipfzs='pip freeze > requirements-stg.txt'
+alias pipfzu='pip freeze > requirements-uat.txt'
+alias pipfzp='pip freeze > requirements-prod.txt'
 
 
 # DOCKER
-alias dps='docker ps'
-alias dpsa='docker ps -a'
-alias dim='docker image ls'
-alias dima='docker image ls -a'
-alias dimrm='docker image rm'
+alias docps='docker ps'
+alias docpa='docker ps -a'
+alias doci='docker image ls'
+alias docia='docker image ls -a'
+alias docup='docker-compose up -d'
+alias docupb='docker-compose up -d --build -f'
+alias docdown='docker-compose down'
+alias docf='docker-compose up -d -f'
 
 # KUBE
-alias k="kubectl"
+alias ku="kubectl"
+alias ku-info="kubectl cluster-info"
+
 # MINIKUBE
 alias mi="minikube"
 
@@ -103,50 +112,48 @@ alias mi="minikube"
 alias dev="devspace"
 
 # VAGRANT
-alias vgv="vagrant --version"
-alias vg="vagrant"
-alias vgu="vagrant up"
+alias vag="vagrant"
+alias vagu="vagrant up"
+alias vagv="vagrant --version"
 
 # GCLOUD
-alias gg="gcloud"
-
-
+alias gc="gcloud"
 
 # GIT
-alias agcm='git add . | git commit -m'
-alias agca='git add . | git commit --amend'
-alias agp='git push'
-alias agpf='git push -f'
-alias agrb='git rebase'
-alias agf='git fetch'
-alias agu='git pull'
-alias agl='git log'
-alias agll='git log --online'
-alias agst='git stash'
-alias agckd="git checkout develop"
-alias agbm="git checkout master"
-alias agb="git checkout"
-alias agbn="git checkout -m"
-# Back Git Root
-alias agcd='cd `git rev-parse --show-toplevel`'
+alias gga='git add .'
+alias ggc='git commit -m'
+alias ggac='git add . | git commit -m'
+alias ggamend='git add . | git commit --amend'
+alias ggf='git fetch'
+alias ggpl='git pull'
+alias ggps='git push'
+alias ggpf='git push -f'
+alias ggll='git log'
+alias ggl='git log --oneline'
+alias ggs='git stash'
+alias ggapply="git stash apply"
+alias ggdev="git checkout develop"
+alias ggmaster="git checkout master"
+alias ggb="git branch -v"
+alias ggrename="git branch -m"
+alias ggck="git checkout"
+alias ggnew="git checkout -b"
+alias gg-s="git reset --soft HEAD~1"
+alias gg-h="git reset --hard HEAD~1"
+alias ggr="git remote -v"
 
 
 # Netstat operations from https://github.com/sperner/BASH/blob/master/bash_aliases
-alias netstat80="netstat -plan|grep :80|awk {'print $5'}|cut -d: -f 1|sort|uniq -c|sort -nk 1"
-alias netstatports="netstat -nape --inet"
-alias netstatpid="netstat -tlnp"
-alias netstatapps="netstat -lantp | grep -i stab | awk -F/ '{print $2}' | sort | uniq"
+alias netid="netstat -tlnp"
+alias netport="netstat -nape --inet"
 # Lists all ports
-alias allports='netstat -tulanp'
+alias netport='netstat -tulanp'
 
 # Lists open listening ports
 alias listenports='netstat -tulanp | grep LISTEN'
 
-# Beautify mount command
-alias mount='mount |column -t'
-
 # Add command to copy directory path to clipboard
-alias cpdir='pwd | xclip'
+alias getpath='pwd | xclip'
 
 # get top process eating cpu
 alias pscpu='ps auxf | sort -nr -k 3'
@@ -157,7 +164,3 @@ alias psmem='ps auxf | sort -nr -k 4'
 alias psmem10='ps auxf | sort -nr -k 4 | head -10'
 
 # SSH
-
-
-# Add command to show hidden files in directory
-alias lshi='ls -d .* --color=auto'

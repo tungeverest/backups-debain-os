@@ -3,10 +3,13 @@
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # JS
-# BUN, DENO
+# BUN
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
-. "/home/tttung/.deno/env"
+
+# DENO
+export DENO_INSTALL="/home/tttung/.deno"
+export PATH="$DENO_INSTALL/bin:$PATH"
 
 export VOLTA_HOME="$HOME/.volta"
 export PATH="$VOLTA_HOME/bin:$PATH"

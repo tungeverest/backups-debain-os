@@ -1,27 +1,12 @@
-
 # Start configuration added by Zim install {{{
 
-export PATH=$HOME/bin:/usr/local/bin:$PATH
+# Load ENVs.
+if [ -f ~/.bash_envs ]; then
+    source ~/.bash_envs
+fi
+
 export ZIM_HOME=~/.zim
 export ZIM_CONFIG_FILE=~/.zimrc
-export PVENV_HOME=~/pyenv
-
-# PyEnv
-export PATH="$HOME/.pyenv/bin:$PATH"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
-
-# NODEJS
-export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
-
-#GOLANG
-export PATH=$PATH:/usr/local/go/bin
-export GOROOT="/home/$USER/go"
-export GOPATH="/home/$USER/go/packages"
-export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
-export GOROOT_BOOTSTRAP=$GOROOT
-
 
 # -----------------
 # Zim configuration
@@ -100,7 +85,15 @@ fi
 eval "$(zoxide init zsh)"
 source ${ZIM_HOME}/init.zsh
 
+# Alias definitions.
+if [ -f ~/.bash_aliases ]; then
+    source ~/.bash_aliases
+fi
 
+# Custom new command functions
+if [ -f $HOME/.bash_functions ]; then
+    source $HOME/.bash_functions
+fi
 # ------------------------------
 ### Post-init module configuration
 # ------------------------------
@@ -158,20 +151,3 @@ zstyle ':zim:prompt-pwd:separator' format '❯❯❯'
 # }}} End configuration added by Zim install
 
 # ZSH Manual Config
-# Custom  Alias
-# alias python=/usr/bin/python3
-alias python=python3
-alias vg="vagrant"
-alias vgv="vagrant --version"
-alias k="kubectl"
-alias dev="devspace"
-alias gg="gcloud"
-alias mi="minikube"
-alias ls="exa"
-alias la="exa -a"
-alias ll="exa -l"
-
-# Kubernetes Completion
-if [ /usr/local/bin/kubectl ]; then source <(kubectl completion zsh); fi
-export USE_GKE_GCLOUD_AUTH_PLUGIN=True
-if [ $HOME/.local/bin/kubectl ]; then source <(kubectl completion zsh); fi

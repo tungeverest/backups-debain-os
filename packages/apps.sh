@@ -1,27 +1,38 @@
 #!/bin/bash
 
-cp 
-sudo apt-get install -y ibus-unikey gparted podman buildah ansible virtualbox
-sudo apt-get install -y snapd flatpak
+sudo apt-get install -y flatpak
+sudo apt-get install -y ibus-unikey gparted virtualbox watchman wireguard
 
-# SNAP
-# https://github.com/perryrh0dan/taskline
-snap install audacity brave postman slack keepassxc gitlive opera ngrok taskline bluemail insomnia mailspring onlyoffice-desktopeditors
-snap alias taskline tl
-# DATABASE GUI
-snap install chatgpt-desktop robo3t-snap redisinsight dbeaver-ce antares beekeeper-studio drawio alacritty
+# FLATPAK
+flatpak install flathub io.github.shiftey.Desktop
+flatpak install flathub com.getpostman.Postman
+flatpak install flathub com.notesnook.Notesnook
+flatpak install flathub org.cryptomator.Cryptomator
 
-
-
-# IDE
-sudo snap install --classic code
-snap install pycharm-community --classic
-snap install intellij-idea-community --classic
-snap install gitkraken --classic
+# BROWERS
+curl -fsS https://dl.brave.com/install.sh | sh
 
 
-sudo snap remove firefox
-sudo apt-get remove --purge -y libreoffice-core thunderbird*
-sudo apt-get remove --purge -y 'libreoffice*'
-sudo apt-get clean
-sudo apt-get autoremove
+# DEVBOX
+curl -fsSL https://get.jetify.com/devbox | bash
+
+# DOWNLOAD .DED list
+## VsCode Gitkraken Apidog
+
+## Obsidian Ulaa Rambox Mega Dbeaver wps Tilux VLC
+
+## SECURITY
+# ProtonVPN ProtonPass ProtonAuth Ente Edoxus Bitwarden Tilux
+sudo add-apt-repository ppa:phoerious/keepassxc
+
+
+# GITHUB CLI
+(type -p wget >/dev/null || (sudo apt update && sudo apt install wget -y)) \
+	&& sudo mkdir -p -m 755 /etc/apt/keyrings \
+	&& out=$(mktemp) && wget -nv -O"$out" https://cli.github.com/packages/githubcli-archive-keyring.gpg \
+	&& cat "$out" | sudo tee /etc/apt/keyrings/githubcli-archive-keyring.gpg > /dev/null \
+	&& sudo chmod go+r /etc/apt/keyrings/githubcli-archive-keyring.gpg \
+	&& sudo mkdir -p -m 755 /etc/apt/sources.list.d \
+	&& echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null \
+	&& sudo apt update \
+	&& sudo apt install gh -y

@@ -33,16 +33,14 @@ zmodule fzf
 zmodule k
 
 # https://github.com/zimfw/pvenv
-zmodule pvenv
+# zmodule pvenv
 
 # ~/.zim/modules/zsh-autoswitch-virtualenv
 # https://github.com/MichaelAquilina/zsh-autoswitch-virtualenv
-zmodule MichaelAquilina/zsh-autoswitch-virtualenv
+# zmodule MichaelAquilina/zsh-autoswitch-virtualenv
 # touch init.zsh
 # cp autoswitch-virtualenv.plugin.zsh init.zsh
 # zimfw build
-
-# sudo apt-get install zoxide
 
 # https://zimfw.sh/docs/commands/
 # https://github.com/zimfw/completion

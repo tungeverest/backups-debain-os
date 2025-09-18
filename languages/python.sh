@@ -1,11 +1,11 @@
+#!/bin/bash
+
 sudo apt install -y python-is-python3 python3-pip
-# python3 -m pip install --upgrade pip
+python3 -m pip install --upgrade pip
+curl -LsSf https://astral.sh/uv/install.sh | sh
+
 curl https://pyenv.run | bash
 pyenv --version
 
+# DEPLOY AWS-LAMBDA
 pip install chalice
-
-# https://github.com/MichaelAquilina/zsh-autoswitch-virtualenv
-# git clone "https://github.com/MichaelAquilina/zsh-autoswitch-virtualenv.git" "$ZIM_HOME/modules/autoswitch_virtualenv"
-# cp $ZIM_HOME/modules/autoswitch_virtualenv/autoswitch_virtualenv.plugin.zsh init.zsh
-# cd $ZIM_HOME/modules/autoswitch_virtualenv && zimfw build && cd -

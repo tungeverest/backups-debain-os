@@ -12,13 +12,19 @@
 
 # Install using the convenience script
 # https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-22-04#step-4-working-with-docker-images
-curl -fsSL https://get.docker.com -o get-docker.sh
+curl -fsSL https://get.docker.com -o ./tmp/get-docker.sh
 sudo sh ./get-docker.sh
-sudo usermod -aG docker ${USER}
+
+dockerd-rootless-setuptool.sh install
+
+sudo usermod -aG docker "${USER}"
 sudo chmod -R 777 /var/run/docker.sock
 sudo systemctl status docker
 sudo systemctl enable docker
 docker info
+
+sudo apt-get install docker-compose-plugin
+docker compose version
 
 # Chạy lênh với arg --dry-run nghĩa là gì vậy
 # Khi chạy lệnh với tùy chọn --dry-run, nó thường có ý nghĩa là lệnh sẽ được thực thi ở chế độ "giả lập" hoặc "thử nghiệm".

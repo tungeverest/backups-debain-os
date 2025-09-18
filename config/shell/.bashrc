@@ -98,7 +98,7 @@ if [ -f ~/.bash_aliases ]; then
     source ~/.bash_aliases
 fi
 
-# Custom new command functions 
+# Custom new command functions
 if [ -f $HOME/.bash_functions ]; then
     source $HOME/.bash_functions
 fi
@@ -114,22 +114,7 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# NODEJS
-export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
-
-#GOLANG
-export PATH=$PATH:/usr/local/go/bin
-export GOROOT="/home/$USER/go"
-export GOPATH="/home/$USER/go/packages"
-export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
-export GOROOT_BOOTSTRAP=$GOROOT
-[[ -s "$HOME/.gvm/scripts/gvm" ]] && source "$HOME/.gvm/scripts/gvm"
-
-# PYENV
-export PVENV_HOME=~/pyenv
-export PATH="$HOME/.pyenv/bin:$PATH"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
-
-export USE_GKE_GCLOUD_AUTH_PLUGIN=True
+# Load ENVs.
+if [ -f ~/.bash_envs ]; then
+    source ~/.bash_envs
+fi
