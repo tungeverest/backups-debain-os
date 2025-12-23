@@ -1,26 +1,21 @@
 #!/bin/bash
 
-sudo apt-get install -y flatpak
-sudo apt-get install -y ibus-unikey gparted virtualbox watchman wireguard
+sudo apt-get install -y flatpak ibus-unikey gparted watchman
 
 # FLATPAK
 flatpak install flathub io.github.shiftey.Desktop
-flatpak install flathub com.getpostman.Postman
 flatpak install flathub com.notesnook.Notesnook
 flatpak install flathub org.cryptomator.Cryptomator
 
 # BROWERS
 curl -fsS https://dl.brave.com/install.sh | sh
 
-
 # DEVBOX
 curl -fsSL https://get.jetify.com/devbox | bash
 
 # DOWNLOAD .DED list
 ## VsCode Gitkraken Apidog
-
 ## Obsidian Ulaa Rambox Mega Dbeaver wps Tilux VLC
-
 ## SECURITY
 # ProtonVPN ProtonPass ProtonAuth Ente Edoxus Bitwarden Tilux
 sudo add-apt-repository ppa:phoerious/keepassxc

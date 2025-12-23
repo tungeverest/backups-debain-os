@@ -27,8 +27,8 @@ curl -fsSL https://raw.githubusercontent.com/zimfw/install/master/install.zsh | 
 chsh -s "$(which zsh)"
 
 sudo cp -rf config/shell/* "$HOME"/
-sudo cp -rf "$HOME"/MEGA/ProtonBackup/.bash_history "$HOME"/
-sudo cp -rf "$HOME"/MEGA/ProtonBackup/.zsh_history "$HOME"/
+sudo cp -rf "$HOME"/MEGA/BackupOS/.bash_history "$HOME"/
+sudo cp -rf "$HOME"/MEGA/BackupOS/.zsh_history "$HOME"/
 
 eval "$(zoxide init zsh)"
 zimfw install

@@ -1,7 +1,7 @@
 #!/bin/bash
 
 curl https://mise.run | sh
-curl https://get.volta.sh | bash
+# curl https://get.volta.sh | bash
 
 # https://nodejs.org/en/download
 curl -o- https://fnm.vercel.app/install | bash

@@ -18,7 +18,7 @@ sudo sh ./get-docker.sh
 dockerd-rootless-setuptool.sh install
 
 sudo usermod -aG docker "${USER}"
-sudo chmod -R 777 /var/run/docker.sock
+sudo chmod -R 700 /var/run/docker.sock
 sudo systemctl status docker
 sudo systemctl enable docker
 docker info

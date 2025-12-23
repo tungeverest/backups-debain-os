@@ -18,7 +18,7 @@ alias ll="exa -l"
 # NETWORK
 ## MyIP
 alias myip="ip -br -c a"
-alias ping888="ping 8.8.8.8"
+alias ping8888="ping 8.8.8.8"
 
 
 # To check the status of any system service:
@@ -92,14 +92,14 @@ alias pipfzp='pip freeze > requirements-prod.txt'
 
 
 # DOCKER
-alias docps='docker ps'
-alias docpa='docker ps -a'
-alias doci='docker image ls'
-alias docia='docker image ls -a'
-alias docup='docker-compose up -d'
-alias docupb='docker-compose up -d --build -f'
-alias docdown='docker-compose down'
-alias docf='docker-compose up -d -f'
+alias dkps='docker ps'
+alias dkpa='docker ps -a'
+alias dki='docker image ls'
+alias dkia='docker image ls -a'
+alias dkup='docker-compose up -d'
+alias dkupb='docker-compose up -d --build -f'
+alias dkdown='docker-compose down'
+alias dkf='docker-compose up -d -f'
 
 # KUBE
 alias ku="kubectl"

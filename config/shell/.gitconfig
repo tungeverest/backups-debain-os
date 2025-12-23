@@ -1,26 +1,26 @@
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+
 [init]
 	defaultBranch = master
-
-[user]
-	name = e.tung.tran2
-	email = e.tung.tran2@wesang.com
-
 [http]
 	sslVerify = true
-
 [commit]
 	gpgSign = false
-
+[gpg]
+    format = ssh
 [pull]
-	rebase = false
-
+	rebase = true
 [gui]
 	pruneduringfetch = true
-
+[push]
+	recurseSubmodules = check
+[core]
+	fsmonitor = true
 [smartgit "submodule"]
 	fetchalways = true
 	update = true
 	initializenew = true
-
-[push]
-	recurseSubmodules = check

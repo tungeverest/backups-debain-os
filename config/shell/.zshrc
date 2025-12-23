@@ -151,3 +151,8 @@ zstyle ':zim:prompt-pwd:separator' format '❯❯❯'
 # }}} End configuration added by Zim install
 
 # ZSH Manual Config
+
+
+# bun completions
+[ -s "~/.bun/_bun" ] && source "~/.bun/_bun"
+eval "$(~/.local/bin/mise activate zsh)"
