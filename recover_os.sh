@@ -3,7 +3,7 @@
 git checkout master
 
 # Install Packages
-sh packages/setup_os.sh
+# sh packages/setup_os.sh
 
 # Install Apps
 # sh packages/apps.sh

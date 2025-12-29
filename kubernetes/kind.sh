@@ -2,6 +2,15 @@
 
 # KIND Kubernetes
 # https://kind.sigs.k8s.io/docs/user/quick-start/#installation
-[ "$(uname -m)" = x86_64 ] && curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.30.0/kind-linux-amd64
-chmod +x ./kind
-sudo mv ./kind /usr/local/bin/kind
+curl -Lo ~/.local/bin/kind https://kind.sigs.k8s.io/dl/latest/kind-linux-amd64
+chmod +x ~/.local/bin/kind
+
+kind version
+# kind create cluster
+# kubectl cluster-info
+
+# Lưu ý:
+
+# kind hoạt động với Docker rootless
+
+# Không dùng Podman tốt bằng Docker

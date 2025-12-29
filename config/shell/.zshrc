@@ -1,10 +1,5 @@
 # Start configuration added by Zim install {{{
 
-# Load ENVs.
-if [ -f ~/.bash_envs ]; then
-    source ~/.bash_envs
-fi
-
 export ZIM_HOME=~/.zim
 export ZIM_CONFIG_FILE=~/.zimrc
 
@@ -18,7 +13,7 @@ bindkey -e
 # Prompt for spelling correction of commands.
 setopt CORRECT
 
-# Customize spelling correction prompt.
+# Customize spelling correction prompt.ell
 # SPROMPT='zsh: correct %F{red}%R%f to %F{green}%r%f [nyae]? '
 
 # Remove path separator from WORDCHARS.
@@ -82,17 +77,12 @@ fi
 
 # INITIALIZE MODULES.
 # zoxide
-eval "$(zoxide init zsh)"
 source ${ZIM_HOME}/init.zsh
+eval "$(zoxide init zsh)"
 
 # Alias definitions.
-if [ -f ~/.bash_aliases ]; then
-    source ~/.bash_aliases
-fi
-
-# Custom new command functions
-if [ -f $HOME/.bash_functions ]; then
-    source $HOME/.bash_functions
+if [ -f ~/.shell_aliases ]; then
+    source ~/.shell_aliases
 fi
 # ------------------------------
 ### Post-init module configuration
@@ -152,7 +142,135 @@ zstyle ':zim:prompt-pwd:separator' format '❯❯❯'
 
 # ZSH Manual Config
 
+export PATH=$HOME/bin:/usr/local/bin:$PATH
+. "$HOME/.local/bin/env"
+
+# Vietnamese Unikey with FCITX for Wayland Ubuntu 24.04+
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+export XMODIFIERS=@im=fcitx
+
+# JS
+## BUN
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
 
 # bun completions
 [ -s "~/.bun/_bun" ] && source "~/.bun/_bun"
+
+
+## DENOs
+. "$HOME/.deno/env"
+export DENO_INSTALL="$HOME/.deno"
+export PATH="$DENO_INSTALL/bin:$PATH"
+
+# Added by Toolbox App
+export PATH="$PATH:$HOME/.local/share/JetBrains/Toolbox/scripts"
+
+# Volta Node Version Manager + NPM Packages
+# export VOLTA_HOME="$HOME/.volta"
+# export PATH="$VOLTA_HOME/bin:$PATH"
+
+## FNM Node Version Manager + NPM Packages
+FNM_PATH="$HOME/.local/share/fnm"
+if [ -d "$FNM_PATH" ]; then
+  export PATH="$FNM_PATH:$PATH"
+  eval "$(fnm env)"
+fi
+
+# PYENV
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init - zsh)"
+
+# JAVA SDKMAN
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+# GOLANG
+export PATH=$PATH:/usr/local/go/bin
+export GOROOT="/home/$USER/go"
+#export GOPATH="/home/$USER/Projects/go/packages"
+#export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
+export GOROOT_BOOTSTRAP=$GOROOT
+
+# RUST
+. "$HOME/.cargo/env"
+
+export USE_GKE_GCLOUD_AUTH_PLUGIN=True
+
+# DOCKER Rootless
+export PATH=/usr/bin:$PATH
+export DOCKER_HOST=unix:///run/user/$(id -u)/docker.sock
+
+# Kubectl User (NOT-ROOT)
+export PATH=$HOME/.local/bin:$PATH
+
+# MISE SHELL
 eval "$(~/.local/bin/mise activate zsh)"
+
+
+export MISE_SHELL=zsh
+if [ -z "${__MISE_ORIG_PATH:-}" ]; then
+  export __MISE_ORIG_PATH="$PATH"
+fi
+export __MISE_ZSH_PRECMD_RUN=0
+
+mise() {
+  local command
+  command="${1:-}"
+  if [ "$#" = 0 ]; then
+    command mise
+    return
+  fi
+  shift
+
+  case "$command" in
+  deactivate|shell|sh)
+    # if argv doesn't contains -h,--help
+    if [[ ! " $@ " =~ " --help " ]] && [[ ! " $@ " =~ " -h " ]]; then
+      eval "$(command mise "$command" "$@")"
+      return $?
+    fi
+    ;;
+  esac
+  command mise "$command" "$@"
+}
+
+# MISE ZSH HOOKS
+
+_mise_hook() {
+  eval "$(mise hook-env -s zsh)";
+}
+_mise_hook_precmd() {
+  eval "$(mise hook-env -s zsh --reason precmd)";
+}
+_mise_hook_chpwd() {
+  eval "$(mise hook-env -s zsh --reason chpwd)";
+}
+typeset -ag precmd_functions;
+if [[ -z "${precmd_functions[(r)_mise_hook_precmd]+1}" ]]; then
+  precmd_functions=( _mise_hook_precmd ${precmd_functions[@]} )
+fi
+typeset -ag chpwd_functions;
+if [[ -z "${chpwd_functions[(r)_mise_hook_chpwd]+1}" ]]; then
+  chpwd_functions=( _mise_hook_chpwd ${chpwd_functions[@]} )
+fi
+
+_mise_hook
+if [ -z "${_mise_cmd_not_found:-}" ]; then
+    _mise_cmd_not_found=1
+    [ -n "$(declare -f command_not_found_handler)" ] && eval "${$(declare -f command_not_found_handler)/command_not_found_handler/_command_not_found_handler}"
+
+    function command_not_found_handler() {
+        if [[ "$1" != "mise" && "$1" != "mise-"* ]] && mise hook-not-found -s zsh -- "$1"; then
+          _mise_hook
+          "$@"
+        elif [ -n "$(declare -f _command_not_found_handler)" ]; then
+            _command_not_found_handler "$@"
+        else
+            echo "zsh: command not found: $1" >&2
+            return 127
+        fi
+    }
+fi

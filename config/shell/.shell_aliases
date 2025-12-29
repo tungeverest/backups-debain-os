@@ -4,16 +4,11 @@
 # alias name="command"
 # unalias NAME
 
-alias zsh-load="source ~/.zshrc && echo ZSH config reloaded"
+alias reload="source ~/.zshrc && echo ZSH config reloaded"
 
 # To change to the root user:
 alias su='sudo -i'
 alias root="sudo su -"
-
-
-alias ls="exa"
-alias la="exa -a"
-alias ll="exa -l"
 
 # NETWORK
 ## MyIP
