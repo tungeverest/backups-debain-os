@@ -1,4 +1,4 @@
-# Recovery os apps, tools, shell automation for new Ubuntu 22.04+ 
+# Recovery os apps, tools, shell automation for new Ubuntu 22.04+
 recover:
 	sh ./recover_os.sh
 

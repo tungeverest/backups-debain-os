@@ -4,10 +4,10 @@
 # export PATH=$PATH:/usr/local/go/bin
 
 mise plugins install golang
-mise install golang@latest
-mise install golang@1.22.4
-mise use --go 1.22.4
+mise install go@latest
+mise install go@1.25.5
+mise use --go 1.25.5
 go version
 
 # .tool-versions
-# golang 1.22.4
+# golang 1.25.5

@@ -12,25 +12,28 @@ zmodule eriner
 # https://zimfw.sh/docs/modules/
 # https://dev.to/sso/zsh-plugins-commit-top-4mbl
 
-# ZSH Module esstiales
-zmodule zsh-users/zsh-syntax-highlighting
-zmodule zsh-users/zsh-autosuggestions
-zmodule zsh-users/zsh-completions --fpath src
-zmodule kiesman99/zim-zoxide
 
 # zim built-ins modules
+# zmodule k
+zmodule git
+zmodule fzf
+zmodule input
+zmodule archive
 zmodule utility
-zmodule prompt-pwd
 zmodule git-info
 zmodule termtitle
-zmodule magic-enter
+zmodule prompt-pwd
 zmodule environment
+zmodule magic-enter
 zmodule duration-info
 zmodule completion
-zmodule git
-zmodule archive
-zmodule fzf
-zmodule k
+
+# ZSH Module esstiales
+zmodule kiesman99/zim-zoxide
+zmodule zsh-users/zsh-autosuggestions
+zmodule zsh-users/zsh-syntax-highlighting
+zmodule zsh-users/zsh-completions --fpath src
+zmodule zsh-users/zsh-history-substring-search
 
 # https://github.com/zimfw/pvenv
 # zmodule pvenv
@@ -42,7 +45,8 @@ zmodule k
 # cp autoswitch-virtualenv.plugin.zsh init.zsh
 # zimfw build
 
-# https://zimfw.sh/docs/commands/
-# https://github.com/zimfw/completion
 # https://github.com/zimfw/k
+# https://zimfw.sh/docs/commands/
 # https://github.com/zimfw/archive
+# https://github.com/zimfw/completion
+

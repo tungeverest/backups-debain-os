@@ -2,14 +2,26 @@
 
 # ZSH
 # https://github.com/zimfw/zimfw
-# https://github.com/ogham/exa
 # https://github.com/powerline/fonts/blob/master/README.rst#installation
 
-sudo apt-get -y install zsh exa zoxide
+sudo apt-get -y install zsh zoxide
 which zsh
 zsh --version
 
-# Oh My ZSH
+curl -fsSL https://raw.githubusercontent.com/zimfw/install/master/install.zsh | zsh
+chsh -s "$(which zsh)"
+
+sudo cp -rf config/shell/* "$HOME"/
+sudo cp -rf "$HOME"/MEGA/BackupOS/.bash_history "$HOME"/
+sudo cp -rf "$HOME"/MEGA/BackupOS/.zsh_history "$HOME"/
+
+eval "$(zoxide init zsh)"
+zimfw install
+# zimfw uninstall
+# zimfw update
+
+
+# Oh My ZSH FW
 # sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 # chsh -s $(which zsh)
 
@@ -22,15 +34,3 @@ zsh --version
 
 # ZimFW
 # https://viblo.asia/p/chuyen-nha-tu-oh-my-zsh-sang-zimfw-GyZJZxmlVjm
-
-curl -fsSL https://raw.githubusercontent.com/zimfw/install/master/install.zsh | zsh
-chsh -s "$(which zsh)"
-
-sudo cp -rf config/shell/* "$HOME"/
-sudo cp -rf "$HOME"/MEGA/ProtonBackup/.bash_history "$HOME"/
-sudo cp -rf "$HOME"/MEGA/ProtonBackup/.zsh_history "$HOME"/
-
-eval "$(zoxide init zsh)"
-zimfw install
-# zimfw uninstall
-# zimfw update

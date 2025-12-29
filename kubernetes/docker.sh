@@ -12,16 +12,42 @@
 
 # Install using the convenience script
 # https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-22-04#step-4-working-with-docker-images
-curl -fsSL https://get.docker.com -o ./tmp/get-docker.sh
+curl -fsSL https://get.docker.com -o ./get-docker.sh
 sudo sh ./get-docker.sh
+
+sudo systemctl disable docker
+sudo systemctl stop docker
+
+sudo systemctl disable docker.socket
+sudo systemctl stop docker.socket
 
 dockerd-rootless-setuptool.sh install
 
-sudo usermod -aG docker "${USER}"
-sudo chmod -R 777 /var/run/docker.sock
 sudo systemctl status docker
 sudo systemctl enable docker
+
+# (insert to ~/.bashrc or ~/.zshrc)
+# export PATH=/usr/bin:$PATH
+# export DOCKER_HOST=unix:///run/user/$(id -u)/docker.sock
+
+systemctl --user start docker
+systemctl --user enable docker
+
+# Docker Rootful (nếu cần legacy / k8s cũ)
+# KHÔNG chạy dockerd-rootless-setuptool.sh
+# sudo usermod -aG docker "${USER}"
+# newgrp docker
 docker info
+
+# kiểm tra alias
+alias | grep docker
+
+# kiểm tra socket
+ls -l /var/run/docker.sock
+ls -l $XDG_RUNTIME_DIR/docker.sock
+
+# kiểm tra daemon
+ps aux | grep dockerd
 
 sudo apt-get install docker-compose-plugin
 docker compose version
